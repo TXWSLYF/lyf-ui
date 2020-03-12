@@ -1,34 +1,39 @@
 <template>
-  <button class="lyf-button" :class="{[`lyf-button-${type}`]: true}" type="button">
+  <button
+    class="lyf-button"
+    :class="[`lyf-button--${type}`, disabled ? 'is-disabled' : '']"
+    type="button"
+  >
     <slot></slot>
   </button>
 </template>
 
 <script>
-import { oneOf } from '../../utils/assist.js';
+import { oneOf } from "../../utils/assist.js";
 
 export default {
-
-  name: 'LyfButton',
-
-  componentName: 'LyfButton',
-
+  name: "LyfButton",
+  componentName: "LyfButton",
   props: {
-
     type: {
-      validator (value) {
-          return oneOf(value, ['default', 'primary', 'dashed', 'text', 'info', 'success', 'warning', 'error']);
+      validator(value) {
+        return oneOf(value, [
+          "default",
+          "primary",
+          "success",
+          "warning",
+          "danger",
+          "info",
+        ]);
       },
       type: String,
-      default: 'default'
+      default: "default"
     },
-    
-    size: {
-      validator (value) {
-          return oneOf(value, ['small', 'large', 'default']);
-      },
-      default: 'default'
+
+    disabled: {
+      type: Boolean,
+      default: false
     }
   }
-}
+};
 </script>

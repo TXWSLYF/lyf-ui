@@ -1,64 +1,100 @@
 @charset "UTF-8";
 @import "common/var";
+@import "mixins/button";
 @import "mixins/mixins";
 
+// default
 @include b(button) {
-  min-width: 60px;
-  height: 36px;
-  font-size: 14px;
-  color: #333;
-  background-color: #fff;
-  border-width: 1px;
-  border-radius: 4px;
+  font-size: $--button-font-size;
+  color: $--button-default-font-color;
+  background-color: $--button-default-background-color;
+  border: $--border-base;
+  border-radius: $--button-border-radius;
+  border-color: $--button-default-border-color;
+  padding: $--button-padding-vertical $--button-padding-horizontal;
   outline: none;
-  border: 1px solid transparent;
-  padding: 0 10px;
+  cursor: pointer;
+  transition: 0.1s;
 
-  &:active,
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:hover,
   &:focus {
-    outline: none;
+    color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
   }
 
-  &-default {
-    color: #333;
-    border-color: #555;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: rgba($--color-primary, 0.3);
-    }
-  }
-  &-primary {
-    color: #fff;
-    background-color: $--color-primary;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: mix($--color-primary, #ccc);
-    }
+  &:active {
+    color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    border-color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
   }
 
-  &-info {
-    color: #fff;
-    background-color: $--color-info;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: mix($--color-info, #ccc);
+  // is-disabled
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      color: $--button-disabled-font-color;
+      background-image: none;
+      background-color: $--button-disabled-background-color;
+      border-color: $--button-disabled-border-color;
     }
   }
-   &-success {
-    color: #fff;
-    background-color: $--color-success;
 
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: mix($--color-success, #ccc);
-    }
+  // primary
+  @include m(primary) {
+    @include button-variant(
+      $--button-primary-font-color,
+      $--button-primary-background-color,
+      $--button-primary-border-color
+    );
+  }
+
+  // info
+  @include m(info) {
+    @include button-variant(
+      $--button-info-font-color,
+      $--button-info-background-color,
+      $--button-info-border-color
+    );
+  }
+
+  // success
+  @include m(success) {
+    @include button-variant(
+      $--button-success-font-color,
+      $--button-success-background-color,
+      $--button-success-border-color
+    );
+  }
+
+  // warning
+  @include m(warning) {
+    @include button-variant(
+      $--button-warning-font-color,
+      $--button-warning-background-color,
+      $--button-warning-border-color
+    );
+  }
+
+  // danger
+  @include m(danger) {
+    @include button-variant(
+      $--button-danger-font-color,
+      $--button-danger-background-color,
+      $--button-danger-border-color
+    );
   }
 }
-

@@ -1,11 +1,30 @@
-$namespace: 'lyf';
+$namespace: "lyf";
+$element-separator: "__";
+$modifier-separator: "--";
+$state-prefix: "is-";
 
 /* BEM
  -------------------------- */
 @mixin b($block) {
-  $B: $namespace+'-'+$block !global;
+  $B: $namespace + "-" + $block !global;
 
   .#{$B} {
     @content;
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  @at-root {
+    &#{$modifier-separator + $modifier} {
+      @content;
+    }
   }
 }
