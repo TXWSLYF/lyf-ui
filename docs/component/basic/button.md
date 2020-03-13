@@ -25,7 +25,23 @@ Vue.component(Button.name, Button);
         <lyf-button type="warning">警告</lyf-button>
         <lyf-button type="danger">危险</lyf-button>
     </div>
-    <code>{{codeStr1}}</code>
+    <code>{{codeBasic}}</code>
+  </demo-block>
+</template>
+
+**朴素按钮**
+
+<template>
+  <demo-block>
+    <div slot="instance">
+        <lyf-button plain>默认</lyf-button>
+        <lyf-button type="primary" plain>主色</lyf-button>
+        <lyf-button type="success" plain>成功</lyf-button>
+        <lyf-button type="info" plain>提示</lyf-button>
+        <lyf-button type="warning" plain>警告</lyf-button>
+        <lyf-button type="danger" plain>危险</lyf-button>
+    </div>
+    <code>{{codePlain}}</code>
   </demo-block>
 </template>
 
@@ -41,25 +57,15 @@ Vue.component(Button.name, Button);
         <lyf-button type="warning" disabled>警告</lyf-button>
         <lyf-button type="danger" disabled>危险</lyf-button>
     </div>
-    <code>{{codeStr2}}</code>
+    <code>{{codeDisabled}}</code>
   </demo-block>
 </template>
-
-
-
-
-
-
-
-
-
-
 
 <script>
 export default {
   data() {
     return {
-      codeStr1:
+      codeBasic:
 `<lyf-button>默认</lyf-button>
 <lyf-button type="primary">主色</lyf-button>
 <lyf-button type="success">成功</lyf-button>
@@ -67,7 +73,14 @@ export default {
 <lyf-button type="warning">警告</lyf-button>
 <lyf-button type="danger">危险</lyf-button>
 `,
-codeStr2:
+codePlain: `
+<lyf-button plain>默认</lyf-button>
+<lyf-button type="primary" plain>主色</lyf-button>
+<lyf-button type="success" plain>成功</lyf-button>
+<lyf-button type="info" plain>提示</lyf-button>
+<lyf-button type="warning" plain>警告</lyf-button>
+<lyf-button type="danger" plain>危险</lyf-button>`,
+codeDisabled:
 `<lyf-button disabled>默认</lyf-button>
 <lyf-button type="primary" disabled>主色</lyf-button>
 <lyf-button type="success" disabled>成功</lyf-button>

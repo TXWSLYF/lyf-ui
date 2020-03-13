@@ -40,6 +40,30 @@
     );
   }
 
+  @include when(plain) {
+    &:hover,
+    &:focus {
+      background: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+
+    &:active {
+      background: $--color-white;
+      border-color: mix(
+        $--color-black,
+        $--color-primary,
+        $--button-active-shade-percent
+      );
+      color: mix(
+        $--color-black,
+        $--color-primary,
+        $--button-active-shade-percent
+      );
+      outline: none;
+    }
+  }
+
   // is-disabled
   @include when(disabled) {
     &,

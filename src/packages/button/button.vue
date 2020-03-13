@@ -1,7 +1,11 @@
 <template>
   <button
     class="lyf-button"
-    :class="[`lyf-button--${type}`, disabled ? 'is-disabled' : '']"
+    :class="[
+      `lyf-button--${type}`,
+      plain ? 'is-plain' : '',
+      disabled ? 'is-disabled' : ''
+    ]"
     type="button"
   >
     <slot></slot>
@@ -23,11 +27,16 @@ export default {
           "success",
           "warning",
           "danger",
-          "info",
+          "info"
         ]);
       },
       type: String,
       default: "default"
+    },
+
+    plain: {
+      type: Boolean,
+      default: false
     },
 
     disabled: {
