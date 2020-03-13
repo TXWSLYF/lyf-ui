@@ -1,5 +1,6 @@
 module.exports = {
   title: "LyfUI",
+  base: '/lyf-ui/',
   description: "another lightweight ui toolkit for Vue.js 2.X",
   port: 8083,
   themeConfig: {
